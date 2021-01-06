@@ -31,6 +31,7 @@ import (
 )
 
 const (
+	// Subsystem is the logging subsystem.
 	Subsystem = "sysctl"
 
 	prefixDir = "/proc/sys"
@@ -116,6 +117,7 @@ func Read(name string) (string, error) {
 	return strings.TrimRight(string(val), "\n"), nil
 }
 
+// ApplySettings applies all settings in sysSettings.
 func ApplySettings(sysSettings []Setting) error {
 	for _, s := range sysSettings {
 		log.WithFields(logrus.Fields{
